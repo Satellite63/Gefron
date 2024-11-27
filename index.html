@@ -57,13 +57,18 @@
             height: 50px;
         }
 
-        /* Container dos gráficos */
         .graficos {
+            width: 80%;
+            height: 100%;
+        }
+        /* Container dos gráficos */
+        .graficos canva{
             display: flex;
             margin-top: -10%;
-            height: auto;
-            width: 100%; /* Faz com que a div dos gráficos ocupe 100% da largura */
+            height: 100%;
+            width: 100%;
             z-index: 1;
+            flex-direction: column-reverse;
         }
 
         /* Personaliza o gráfico principal */
@@ -74,8 +79,6 @@
 
         /* Estilo dos quadrados informativos */
         .quadrado {
-            margin-top: 23.3%;
-            margin-left: 80%;
             width: 340px;
             height: 150px;
             background-color: #465338;
@@ -88,8 +91,6 @@
 
         /* Quadrado menor para exibição de detalhes */
         .quadradoMenor {
-            margin-left: 81%;
-            margin-top: -6.8%;
             width: 310px;
             height: 90px;
             background-color: #959340;
@@ -101,8 +102,7 @@
 
         /* Segundo quadrado para exibição de dados adicionais */
         .quadrado2 {
-            margin-top: -17%;
-            margin-left: 80%;
+            margin-top: 10px;
             width: 340px;
             height: 150px;
             background-color: #465338;
@@ -115,8 +115,6 @@
 
         /* Quadrado para exibição do total de chamadas */
         .quadradoTotalChamadas {
-            margin-left: 81%;
-            margin-top: -6.8%;
             width: 310px;
             height: 80px;
             background-color: #959340;
@@ -128,8 +126,6 @@
 
         /* Caixa de entrada para busca de zonas */
         #zonaInput {
-            margin-top: 12%;
-            margin-left: 81% !important;
             width: 210px;
             height: 30px;
             z-index: 2;
@@ -137,26 +133,39 @@
 
         /* Botão de busca para zona específica */
         .buttonBuscar {
-            margin-top: -2.15%!important;
-            margin-left: 94%!important;
-            border: none;
-            color: black;
-            padding: 10px 10px;
-            text-align: center;
-            font-size: 14px;
-            margin: 10px;
-            cursor: pointer;
-            width: 100px;
-            height: 36px;
-            border: 2px solid #ab9731;
-            font-family: sans-serif;
-            z-index: 2;
+        margin-top: -2.15% !important;
+        margin-left: 94% !important;
+        border: none;
+        color: black;
+        padding: 10px 10px;
+        text-align: center;
+        font-size: 14px;
+        margin: 10px;
+        cursor: pointer;
+        width: 100px;
+        height: 36px;
+        border: 2px solid #ab9731;
+        font-family: sans-serif;
+        z-index: 2;
         }
 
         /* Estilo de hover para o botão de busca */
         .buttonBuscar:hover {
             background-color: #ab9731;
             color: azure;
+        }
+
+        .graficos-botoes{
+            margin-top: 10%;
+            display: flex;
+            flex-direction: row;
+        }
+
+        .graficos-botoes .botoes{
+            display: flex;
+            flex-direction: column;
+            width: 20%;
+
         }
 
     </style>    
@@ -181,26 +190,26 @@
             <button class="button" onclick="gerarGraficoTotalChamadas('novembro.csv');"><strong>NOVEMBRO</strong></button>    
             <button class="button" onclick="gerarGraficoTotalChamadas('dezembro.csv');"><strong>DEZEMBRO</strong></button>  
             <button class="button" onclick="gerarGraficoTotalChamadas('Anual.csv')"><strong>ANUAL</strong></button>
-            
-            <!-- Quadrado informativo para o maior número de chamadas -->
-            <div class="quadrado" id="quadradoMaiorNumero"><strong>MAIOR NÚMERO DE CHAMADAS</strong></div> 
-            <!-- Quadrado menor para exibir o valor -->
-            <div class="quadradoMenor" id="quadradoMenor"></div>
-            <!-- Outro quadrado informativo para o total de chamadas -->
-            <div class="quadrado2" id="quadradototal"><strong>TOTAL CHAMADAS</strong></div> 
-            <!-- Quadrado para exibir o valor total das chamadas -->
-            <div class="quadradoTotalChamadas" id="quadradoTotalChamadas"></div>
         </div>
-
-        <!-- Campo de entrada para buscar por zona -->
-        <input type="text" id="zonaInput" placeholder="Digite o nome da zona" />
-        <!-- Botão de busca para a zona -->
-        <button class="buttonBuscar" onclick="buscarZona();"><strong>BUSCAR</strong></button>
-
-        <!-- Div para exibir os gráficos de chamadas -->
-        <div class="graficos">
-            <canvas id="myChartTotalChamadas"></canvas> <!-- Canvas para o gráfico principal -->
-        </div>
+        <div class="graficos-botoes">
+            <div class="graficos">
+                <canvas id="myChartTotalChamadas"></canvas> <!-- Canvas para o gráfico principal -->
+            </div>
+            <div class="botoes">
+                <!-- Campo de entrada para buscar por zona -->
+                <!-- <input type="text" id="zonaInput" placeholder="Digite o nome da zona" /> -->
+                <!-- Botão de busca para a zona -->
+                <!-- <button class="buttonBuscar" onclick="buscarZona();"><strong>BUSCAR</strong></button> -->
+                 <!-- Quadrado informativo para o maior número de chamadas -->
+                <div class="quadrado" id="quadradoMaiorNumero"><strong>MAIOR NÚMERO DE CHAMADAS</strong></div> 
+                <!-- Quadrado menor para exibir o valor -->
+                <div class="quadradoMenor" id="quadradoMenor"></div>
+                <!-- Outro quadrado informativo para o total de chamadas -->
+                <div class="quadrado2" id="quadradototal"><strong>TOTAL CHAMADAS</strong></div> 
+                <!-- Quadrado para exibir o valor total das chamadas -->
+                <div class="quadradoTotalChamadas" id="quadradoTotalChamadas"></div>
+            </div>
+        </div>              
     </div>
     
 </body>
